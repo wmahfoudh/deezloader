@@ -1,8 +1,11 @@
 # deezloader
 
+This project has been created to download songs, albums or playlists with Spotify or Deezer link from Deezer.
+
+# Changes
 - This is a fork of the original project located here https://github.com/An0nimia/deezloader
-- The reason of the fork is a minor change for improving the way files are saved
-- This project has been created to download songs, albums or playlists with Spotify or Deezer link from Deezer.
+- The reason of the fork is a minor change for improving the way files are saved: Instaed of individual folders for each file, files are saved in the same folder given in the command line with the following pattern [track name] - [artist]. File names are sanitized before saving.
+- This repository won't be updated.
 
 # Disclaimer
 
