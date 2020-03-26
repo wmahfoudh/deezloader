@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import os
+import re
 from tqdm import tqdm
 from spotipy import Spotify
 from requests import Session
@@ -119,7 +120,7 @@ class Login:
 						if a == "MP3_128":
 							raise exceptions.TrackNotFound("There isn't any quality avalaible for download this song: %s" % name)
 
-			name += " ({}){}".format(qualit, extension)
+			name += "{}".format(extension)
 
 			if os.path.isfile(name):
 				if recursive_download:
@@ -403,24 +404,16 @@ class Login:
 		datas['isrc'] = url['isrc']
 		album = var_excape(datas['album'])
 
-		directory = (
-			"%s%s %s/"
-			% (
-				output,
-				album,
-				url1['upc']
-			)
-		)
+		directory = output
 
 		check_dir(directory)
 
 		name = (
-			"%s%s CD %s TRACK %s"
+			"%s%s - %s"
 			% (
 				directory,
-				album,
-				datas['discnum'],
-				datas['tracknum']
+				re.sub(r'[\\/*?:"<>|]', "", datas['music']),
+				re.sub(r'[\\/*?:"<>|]', "", datas['artist'])
 			)
 		)
 
